@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opto — Evaluation Methodology &amp; Fact Sheet</title>
+    <meta name="description" content="How Opto's token and cost reduction numbers were measured: sample size, date range, query size range, and the real reduction range across query types.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="opto-icon.svg">
+    <style>
+        .fact-section { padding: 60px 0 100px 0; }
+        .fact-card { padding: 40px; margin-bottom: 24px; }
+        .fact-card h2 { font-size: 1.4rem; margin-bottom: 16px; }
+        .fact-card p, .fact-card li { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; }
+        .fact-card ul { margin: 0 0 0 20px; }
+        .fact-card li { margin-bottom: 8px; }
+        .fact-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+        .fact-table th, .fact-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border-color); }
+        .fact-table th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; }
+        .fact-table td { color: var(--text-primary); }
+        .callout { background: rgba(0, 138, 208, 0.08); border: 1px solid rgba(0, 138, 208, 0.25); border-radius: 10px; padding: 20px 24px; margin-top: 20px; }
+        .callout p { color: var(--text-primary); margin: 0; }
+        .back-link { display: inline-block; margin-bottom: 28px; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+        .back-link:hover { color: var(--text-primary); }
+    </style>
+</head>
+<body>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-lockup">
+                <img src="opto-logo.svg" alt="Opto" style="height: 26px; width: auto; display: block;">
+                <span style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600; color: #9CA3AF; letter-spacing: 0.5px; margin-left: 2px;">by modulus</span>
+            </a>
+            <nav class="nav">
+                <a href="index.html#live-sim" class="nav-link">Live Simulation</a>
+                <a href="index.html#roi" class="nav-link">Empirical ROI</a>
+                <a href="mailto:info@getopto.dev" class="nav-link">Contact</a>
+                <a href="mailto:demo@iarchitecture.com?subject=Request%20Sandbox%20Access%20(15-Minute%20Call)" class="btn btn-primary">Request Sandbox Access</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="fact-section">
+            <div class="container" style="max-width: 800px;">
+                <a href="index.html" class="back-link">&larr; Back to Opto</a>
+                <h1 class="section-title" style="margin-bottom: 12px;">Evaluation Methodology &amp; Fact Sheet</h1>
+                <p class="section-subtitle" style="text-align: left; margin-bottom: 40px;">Every number on this page is read directly from a frozen evaluation dataset — nothing here is projected, adjusted, or rounded up. If a number on the main site links here, this is where it comes from.</p>
+
+                <div class="glass-card fact-card">
+                    <h2 class="text-blue">Evaluation Basis</h2>
+                    <ul>
+                        <li>Measurement campaign conducted <strong>2026-09-27 to 2026-09-28</strong> against live Anthropic API endpoints (Claude Sonnet 5 and Claude Haiku 4.5), not a mock or simulated backend.</li>
+                        <li><strong>438 total runs attempted</strong>, of which <strong>355 were kept</strong> as clean, comparable measurements.</li>
+                        <li><strong>83 runs excluded</strong> from the results: 74 were superseded/retired task-wording versions (a task prompt was revised mid-campaign, both old and new versions can't be mixed under one task id), 8 were a PII probe task intentionally excluded from savings numbers, and 1 was excluded for a cross-task answer contamination incident.</li>
+                        <li>Task sizes span three bands — Small (light chat / status checks), Medium (Excel/PDF/invoice-scale documents), Heavy (SQL joins, directory scans, Parquet merges) — each run against both an unaided baseline and Opto, on both a cold cache and a warm cache, on both models.</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card fact-card">
+                    <h2 class="text-blue">Query Size Range</h2>
+                    <p>Across all 355 kept runs, individual query size ranged:</p>
+                    <table class="fact-table">
+                        <tr><th>Metric</th><th>Minimum</th><th>Maximum</th></tr>
+                        <tr><td>Tokens per query (input + output)</td><td>10,638</td><td>2,152,880</td></tr>
+                        <tr><td>Dollar cost per query</td><td>$0.0053</td><td>$1.2221</td></tr>
+                    </table>
+                </div>
+
+                <div class="glass-card fact-card">
+                    <h2 class="text-orange">Reduction Range, By Query Type</h2>
+                    <p>Opto's advantage is not a single number — it depends heavily on query size and whether the cache is warm. Per-query average reduction, unaided vs. Opto, across the six measured size/cache-state combinations:</p>
+                    <table class="fact-table">
+                        <tr><th>Size</th><th>Cache</th><th>Token Reduction</th><th>Cost Reduction</th></tr>
+                        <tr><td>Small</td><td>Cold</td><td>80.2%</td><td>79.1%</td></tr>
+                        <tr><td>Small</td><td>Warm</td><td>81.4%</td><td>71.2%</td></tr>
+                        <tr><td>Medium</td><td>Cold</td><td>64.9%</td><td>51.3%</td></tr>
+                        <tr><td>Medium</td><td>Warm</td><td>67.8%</td><td>14.3%</td></tr>
+                        <tr><td>Heavy</td><td>Cold</td><td>57.5%</td><td>40.9%</td></tr>
+                        <tr><td>Heavy</td><td>Warm</td><td>71.6%</td><td>46.1%</td></tr>
+                    </table>
+                    <p style="margin-top: 16px;"><strong>Token reduction: 57.5% – 81.4%.</strong> <strong>Cost reduction: 14.3% – 79.1%.</strong> Cost reduction narrows on warm-cache Medium/Heavy queries because Anthropic's own cache discount already lowers the unaided baseline's price — Opto's token savings are still real and large there, they just translate into a smaller dollar gap once the baseline itself gets cheaper.</p>
+                </div>
+
+                <div class="callout">
+                    <p><strong>Your savings will depend on your own query mix.</strong> Small, repetitive, cache-friendly workloads see the largest reductions. Large one-off analytical queries against cold data see smaller ones. These ranges are the honest bounds from our own measured campaign — they are not a guarantee for any other workload. The only way to get a number specific to you is to run your own queries in the sandbox.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 IArchitecture Corporation. Opto is a registered product of the <a href="https://getmodulus.dev" target="_blank">Modulus</a> ecosystem.</p>
+            <p style="margin-top: 8px; font-size: 0.8rem; color: #64748b;">getOpto.dev • In-Memory Sovereign AI Runtime</p>
+        </div>
+    </footer>
+</body>
+</html>

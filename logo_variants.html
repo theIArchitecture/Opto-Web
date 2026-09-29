@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opto by Modulus — Icon & Logo Exploration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-blue: #008ad0;
+            --brand-orange-orig: #f15a26;
+            --brand-orange-warm: #e55722;
+            --brand-orange-ember: #d6511d;
+            --brand-orange-terracotta: #c44d1b;
+            --bg-dark: #0B0F19;
+            --card-dark: rgba(17, 24, 39, 0.75);
+            --border-dark: rgba(255, 255, 255, 0.08);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            max-width: 760px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 0 0 12px 0;
+            background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-orange-ember) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 138, 208, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 9999px;
+            padding: 4px 14px;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 16px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 980px;
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+        }
+
+        .card {
+            background: var(--card-dark);
+            border: 1px solid var(--border-dark);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-dark);
+            padding-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        .card-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #fb923c;
+            background: rgba(251, 146, 60, 0.12);
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        .showcase-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 36px;
+            padding: 30px;
+            background: #0d121f;
+            border: 1px dashed rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .item-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .item-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .item-label.chosen {
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        .divider-v {
+            width: 1px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .desc-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .desc-text strong {
+            color: var(--text-main);
+        }
+
+        .desc-text code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #38bdf8;
+        }
+
+        /* Swatch Bar */
+        .swatch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            width: 100%;
+            margin-bottom: 24px;
+        }
+        .swatch-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-dark);
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .swatch-color {
+            height: 48px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Light Preview Container */
+        .light-bg {
+            background: #ffffff !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+        .light-bg .item-label {
+            color: #64748b !important;
+        }
+        .light-bg .item-label.chosen {
+            color: #0284c7 !important;
+        }
+        .light-bg .divider-v {
+            background: rgba(0, 0, 0, 0.1) !important;
+        }
+        .light-bg text.sub-brand {
+            fill: #64748b !important;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="badge">DESIGN REFINEMENT #2</span>
+        <h1>opto by modulus</h1>
+        <p class="subtitle">
+            Dialing in the <strong>'t' proportion & scale</strong> (monospace width & baseline anchoring) and knocking down the <strong>orange electricity</strong>.
+        </p>
+    </header>
+
+    <div class="container">
+
+        <!-- SECTION 1: KNOCKING DOWN THE ORANGE ELECTRICITY -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">1. Orange Calibration: De-Electrifying the Hue</h2>
+                <span class="card-tag">SATURATION & LUMINANCE TUNING</span>
+            </div>
+
+            <div class="swatch-grid">
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #f15a26;">#f15a26</div>
+                    <div style="font-size: 0.85rem; font-weight: 600;">Original (High Voltage)</div>
+                    <div style="font-size: 0.78rem; color: #9CA3AF;">89% Saturation. High contrast, can feel like neon/glow on OLED/dark themes.</div>
+                </div>
+
+                <div class="swatch-card" style="border-color: rgba(229, 87, 34, 0.4);">
+                    <div class="swatch-color" style="background: #e55722;">#e55722</div>
+                    <div style="font-size: 0.85rem; font-weight: 600; color: #fb923c;">Warm Ember (Recommended)</div>
+                    <div style="font-size: 0.78rem; color: #9CA3AF;">Knocks down peak neon vibration by ~12% while keeping full brand energy.</div>
+                </div>
+
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #d6511d;">#d6511d</div>
+                    <div style="font-size: 0.85rem; font-weight: 600;">Grounded Terracotta</div>
+                    <div style="font-size: 0.78rem; color: #9CA3AF;">Richer, deeper brick-orange. Very calm, zero glare, high enterprise feel.</div>
+                </div>
+
+                <div class="swatch-card">
+                    <div class="swatch-color" style="background: #c44d1b;">#c44d1b</div>
+                    <div style="font-size: 0.85rem; font-weight: 600;">Deep Bronze-Orange</div>
+                    <div style="font-size: 0.78rem; color: #9CA3AF;">Warm autumn copper. Subtle accent that lets the blue remain the primary focal point.</div>
+                </div>
+            </div>
+
+            <p class="desc-text">
+                The original <code>#f15a26</code> was the standard saturated print-conversion orange. On deep dark backgrounds (like <code>#0B0F19</code>), it emits an almost fluorescent, electric glare. Shifting to <strong>#e55722</strong> or <strong>#d6511d</strong> removes the harshness while preserving the warm, energetic pairing with Brand Blue (<code>#008ad0</code>).
+            </p>
+        </div>
+
+        <!-- SECTION 2: SCALED 'T' EXPLORATIONS -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">2. Scaling the 't' to Full Monospace Proportion</h2>
+                <span class="card-tag">EQUAL CELL WIDTH & BASELINE ALIGNMENT</span>
+            </div>
+
+            <div class="showcase-row" style="flex-direction: column; gap: 32px; align-items: stretch;">
+
+                <!-- VARIANT 1: Curved Hook 't' (Matching 'u' and 'o' Arc) -->
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+                    <div>
+                        <span class="item-label chosen">T-1: Curved Hook 't' (Anchored at Baseline 55, Full Width)</span>
+                        <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">
+                            Vertical stem sweeps into a right hook anchored at baseline <code>y=55</code> (flush with bottom of <code>o</code> & <code>p</code>). Crossbar spans full monospace width at x-height <code>y=29</code>.
+                        </div>
+                    </div>
+                    <svg width="340" height="90" viewBox="0 0 340 90" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- Blue: o, p, o -->
+                            <g stroke="#008ad0">
+                                <circle cx="40" cy="42" r="13" />
+                                <circle cx="82" cy="42" r="13" />
+                                <path d="M 69 29 L 69 70" />
+                                <circle cx="166" cy="42" r="13" />
+                            </g>
+                            <!-- Full Orange 't' with Curved Hook (Warm Ember #e55722) -->
+                            <g stroke="#e55722">
+                                <!-- Crossbar at x-height (y=29), spanning full 32px width -->
+                                <path d="M 108 29 L 138 29" />
+                                <!-- Stem from top (15) down to 43, curving to baseline 55 -->
+                                <path d="M 122 15 L 122 43 A 12 12 0 0 0 136 55" />
+                            </g>
+                            <text class="sub-brand" x="198" y="52" fill="#9CA3AF" font-family="'Outfit', sans-serif" font-size="16" font-weight="600" letter-spacing="0.5">by modulus</text>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- VARIANT 2: Straight Stem 't' with Equal Monospace Crossbar -->
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+                    <div>
+                        <span class="item-label chosen">T-2: Straight Stem 't' (Anchored at 55, Full Monospace Crossbar)</span>
+                        <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">
+                            Straight architectural cross: stem terminates exactly at baseline <code>y=55</code>. Crossbar spans 34px width at x-height <code>y=29</code>.
+                        </div>
+                    </div>
+                    <svg width="340" height="90" viewBox="0 0 340 90" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                            <g stroke="#008ad0">
+                                <circle cx="40" cy="42" r="13" />
+                                <circle cx="82" cy="42" r="13" />
+                                <path d="M 69 29 L 69 70" />
+                                <circle cx="166" cy="42" r="13" />
+                            </g>
+                            <g stroke="#e55722">
+                                <!-- Crossbar at x-height (y=29), spanning full 34px width -->
+                                <path d="M 107 29 L 141 29" />
+                                <!-- Straight vertical stem anchored firmly at y=55 -->
+                                <path d="M 124 15 L 124 55" />
+                            </g>
+                            <text class="sub-brand" x="198" y="52" fill="#9CA3AF" font-family="'Outfit', sans-serif" font-size="16" font-weight="600" letter-spacing="0.5">by modulus</text>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- VARIANT 3: Monospace 't' with Baseline Foot Serif -->
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+                    <div>
+                        <span class="item-label">T-3: Architectural 't' with Baseline Foot (Anchored at 55)</span>
+                        <div style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">
+                            Has a subtle horizontal base at <code>y=55</code> so the letter cell has identical width top and bottom.
+                        </div>
+                    </div>
+                    <svg width="340" height="90" viewBox="0 0 340 90" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                            <g stroke="#008ad0">
+                                <circle cx="40" cy="42" r="13" />
+                                <circle cx="82" cy="42" r="13" />
+                                <path d="M 69 29 L 69 70" />
+                                <circle cx="166" cy="42" r="13" />
+                            </g>
+                            <g stroke="#e55722">
+                                <path d="M 110 29 L 138 29" />
+                                <path d="M 124 15 L 124 55" />
+                                <!-- Foot at baseline 55 -->
+                                <path d="M 116 55 L 134 55" />
+                            </g>
+                            <text class="sub-brand" x="198" y="52" fill="#9CA3AF" font-family="'Outfit', sans-serif" font-size="16" font-weight="600" letter-spacing="0.5">by modulus</text>
+                        </g>
+                    </svg>
+                </div>
+
+            </div>
+
+            <!-- LIGHT THEME PREVIEW -->
+            <div class="showcase-row light-bg" style="flex-direction: column; gap: 24px; align-items: stretch;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                    <div>
+                        <span class="item-label chosen">Light Mode: T-1 (Curved Hook 't' with Calibrated Orange #e55722)</span>
+                    </div>
+                    <svg width="340" height="90" viewBox="0 0 340 90" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                            <g stroke="#008ad0">
+                                <circle cx="40" cy="42" r="13" />
+                                <circle cx="82" cy="42" r="13" />
+                                <path d="M 69 29 L 69 70" />
+                                <circle cx="166" cy="42" r="13" />
+                            </g>
+                            <g stroke="#e55722">
+                                <path d="M 108 29 L 138 29" />
+                                <path d="M 122 15 L 122 43 A 12 12 0 0 0 136 55" />
+                            </g>
+                            <text class="sub-brand" x="198" y="52" fill="#64748b" font-family="'Outfit', sans-serif" font-size="16" font-weight="600" letter-spacing="0.5">by modulus</text>
+                        </g>
+                    </svg>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                    <div>
+                        <span class="item-label chosen">Light Mode: T-2 (Straight Stem 't' with Calibrated Orange #e55722)</span>
+                    </div>
+                    <svg width="340" height="90" viewBox="0 0 340 90" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                            <g stroke="#008ad0">
+                                <circle cx="40" cy="42" r="13" />
+                                <circle cx="82" cy="42" r="13" />
+                                <path d="M 69 29 L 69 70" />
+                                <circle cx="166" cy="42" r="13" />
+                            </g>
+                            <g stroke="#e55722">
+                                <path d="M 107 29 L 141 29" />
+                                <path d="M 124 15 L 124 55" />
+                            </g>
+                            <text class="sub-brand" x="198" y="52" fill="#64748b" font-family="'Outfit', sans-serif" font-size="16" font-weight="600" letter-spacing="0.5">by modulus</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <p class="desc-text">
+                <strong>Why these changes fix the scale:</strong><br>
+                1. <strong>Baseline Anchor (y=55)</strong>: In the previous draft, the crossbar was at <code>y=33</code> (below the top of the 'o's at <code>y=29</code>), making the whole character feel slumped and diminutive. Raising the crossbar to <code>y=29</code> aligns it with the exact x-height of the wordmark.<br>
+                2. <strong>Equal Width</strong>: The crossbar width has been scaled from 24px up to <strong>30–34px</strong>, matching the full cell width of the circular letters (<code>o</code> and <code>p</code>).<br>
+                3. <strong>The Hook (T-1)</strong>: Adding the curve at the bottom (using the same <code>r=12</code> curvature as the <code>u</code> in Modulus) anchors the letter firmly at the baseline and gives it the signature organic flow of geometric sans fonts.
+            </p>
+        </div>
+
+        <!-- SECTION 3: THE COMPLETE LOCKUP -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">3. Master Lockup (Icon + Scaled Wordmark)</h2>
+                <span class="card-tag">DE-ELECTRIFIED ORANGE #e55722</span>
+            </div>
+
+            <div class="showcase-row">
+                <div class="item-box">
+                    <span class="item-label chosen">Master Lockup with T-1 (Curved Hook)</span>
+                    <svg width="480" height="100" viewBox="0 0 460 90" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- Opto Icon (Wide Sibling Bar) in Calibrated Orange -->
+                            <circle cx="44" cy="42" r="13" stroke="#008ad0" />
+                            <path d="M 26 70 L 62 70" stroke="#e55722" />
+
+                            <!-- Vertical divider between Icon and Wordmark -->
+                            <path d="M 94 20 L 94 65" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+
+                            <!-- Wordmark: opto (T-1 with Calibrated Orange) -->
+                            <g stroke="#008ad0">
+                                <circle cx="134" cy="42" r="13" />
+                                <circle cx="176" cy="42" r="13" />
+                                <path d="M 163 29 L 163 70" />
+                                <circle cx="260" cy="42" r="13" />
+                            </g>
+                            <g stroke="#e55722">
+                                <path d="M 202 29 L 232 29" />
+                                <path d="M 216 15 L 216 43 A 12 12 0 0 0 230 55" />
+                            </g>
+
+                            <text x="292" y="52" fill="#9CA3AF" font-family="'Outfit', sans-serif" font-size="16" font-weight="600" letter-spacing="0.5">by modulus</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="showcase-row">
+                <div class="item-box">
+                    <span class="item-label">Master Lockup with T-2 (Straight Architectural Cross)</span>
+                    <svg width="480" height="100" viewBox="0 0 460 90" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="44" cy="42" r="13" stroke="#008ad0" />
+                            <path d="M 26 70 L 62 70" stroke="#e55722" />
+
+                            <path d="M 94 20 L 94 65" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+
+                            <g stroke="#008ad0">
+                                <circle cx="134" cy="42" r="13" />
+                                <circle cx="176" cy="42" r="13" />
+                                <path d="M 163 29 L 163 70" />
+                                <circle cx="260" cy="42" r="13" />
+                            </g>
+                            <g stroke="#e55722">
+                                <path d="M 201 29 L 235 29" />
+                                <path d="M 218 15 L 218 55" />
+                            </g>
+
+                            <text x="292" y="52" fill="#9CA3AF" font-family="'Outfit', sans-serif" font-size="16" font-weight="600" letter-spacing="0.5">by modulus</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
