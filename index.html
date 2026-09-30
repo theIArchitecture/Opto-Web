@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opto by Modulus — The Sovereign In-Memory Execution Air-Gap</title>
-    <meta name="description" content="Opto provides an optical-style air-gap between enterprise data and AI models. Lock down your sensitive databases, eliminate data exfiltration, and slash token spend by up to 81%.">
+    <meta name="description" content="Opto provides an optical-style air-gap between enterprise data and AI models. Lock down your sensitive databases, eliminate data exfiltration, and slash token spend by 68% on average.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
                 <a href="#live-sim" class="nav-link">Live Simulation</a>
                 <a href="#roi" class="nav-link">Empirical ROI</a>
                 <a href="mailto:info@getopto.dev" class="nav-link">Contact</a>
-                <a href="mailto:demo@iarchitecture.com?subject=Request%20for%2015-Minute%20Opto%20Demo" class="btn btn-primary">Book 15m Demo</a>
+                <a href="mailto:demo@getopto.dev?subject=Request%20for%2015-Minute%20Opto%20Demo" class="btn btn-primary">Book 15m Demo</a>
             </nav>
         </div>
     </header>
@@ -38,12 +38,12 @@
             <div class="container hero-container">
                 <div class="hero-content">
                     <div class="badge">The In-Memory AI Air-Gap</div>
-                    <h1 class="hero-title">Lock Down Your Data.<br>Slash Token Spend <br><span class="text-orange">by up to 81%.</span></h1>
+                    <h1 class="hero-title">Lock Down Your Data.<br>Slash Token Spend <br><span class="text-orange">by 68%, on average.</span></h1>
                     <p class="hero-subtitle">
                         Stop streaming confidential files and raw database rows to public LLM APIs. <strong>Opto by Modulus</strong> provides an in-memory execution air-gap: transformations, SQL joins, aggregations, and PII redaction execute locally in private RAM—emitting only compact, mathematically verified answers.
                     </p>
                     <div class="hero-actions">
-                        <a href="mailto:demo@iarchitecture.com?subject=Request%20Sandbox%20Access%20(15-Minute%20Call)" class="btn btn-primary">Request Sandbox Access</a>
+                        <a href="mailto:sandbox@getopto.dev?subject=Request%20Sandbox%20Access%20(15-Minute%20Call)" class="btn btn-primary">Request Sandbox Access</a>
                         <a href="#video" class="btn btn-secondary">Watch the Video</a>
                     </div>
                     <p style="margin-top: 14px; font-size: 0.85rem; color: var(--text-muted);">Sandbox access is granted after a 15-minute walkthrough call — no self-serve signup yet.</p>
@@ -81,8 +81,8 @@
             <div class="container">
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <h3 class="text-orange">58–81%</h3>
-                        <p>Measured Token Reduction Range</p>
+                        <h3 class="text-orange">68%</h3>
+                        <p>Average Token Reduction</p>
                     </div>
                     <div class="stat-item">
                         <h3 class="text-blue">355</h3>
@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <p style="text-align: center; margin-top: 28px; font-size: 0.9rem; color: var(--text-muted);">
-                    These are ranges, not guarantees — actual savings depend on your query mix. <a href="methodology.html" style="color: var(--brand-blue);">See the full methodology &amp; fact sheet →</a>
+                    68% is a blended average, not a guarantee — actual savings depend on your query mix. <a href="methodology.html" style="color: var(--brand-blue);">See the full methodology &amp; fact sheet →</a>
                 </p>
             </div>
         </section>
@@ -142,6 +142,20 @@
                         <canvas id="simChart" height="110"></canvas>
                     </div>
                     <p class="sim-footnote">Source: <code>opto_pid_timeseries.csv</code> / <code>frontier_unmanaged_timeseries.csv</code>, one full simulated 10-hour workday (600 minutes), sampled every 5 minutes.</p>
+
+                    <div class="reduction-table-wrap" style="border-top: 1px solid var(--border-color);">
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 14px;">68% is the blended full-day average across a realistic query mix. The real reduction per query type, measured directly from 355 real API calls, varies by size and cache state:</p>
+                        <table class="reduction-table">
+                            <tr><th>Size</th><th>Cache</th><th>Token Reduction</th><th>Cost Reduction</th></tr>
+                            <tr><td>Small</td><td>Cold</td><td>80.2%</td><td>79.1%</td></tr>
+                            <tr><td>Small</td><td>Warm</td><td>81.4%</td><td>71.2%</td></tr>
+                            <tr><td>Medium</td><td>Cold</td><td>64.9%</td><td>51.3%</td></tr>
+                            <tr><td>Medium</td><td>Warm</td><td>67.8%</td><td>14.3%</td></tr>
+                            <tr><td>Heavy</td><td>Cold</td><td>57.5%</td><td>40.9%</td></tr>
+                            <tr><td>Heavy</td><td>Warm</td><td>71.6%</td><td>46.1%</td></tr>
+                        </table>
+                        <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 12px;">Cost reduction narrows on warm-cache queries because Anthropic's own cache discount already lowers the unaided baseline's price — full methodology at <a href="methodology.html" style="color: var(--brand-blue);">methodology.html</a>.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -168,7 +182,6 @@
                 
                 <div class="features-grid">
                     <div class="glass-card feature-card">
-                        <div class="feature-icon">🛡️</div>
                         <h3 class="feature-title">Optocoupler Isolation</h3>
                         <p class="feature-desc">
                             Operates as a true optical-style air-gap. The model has zero shell access, zero filesystem traversal, and zero raw socket access. It orchestrates strictly through verified, declarative tool contracts.
@@ -176,7 +189,6 @@
                     </div>
 
                     <div class="glass-card feature-card">
-                        <div class="feature-icon">⚡</div>
                         <h3 class="feature-title">In-Flight Egress Governance</h3>
                         <p class="feature-desc">
                             All outbound context passes through compiled in-memory PII scrubbers (SSNs, emails, API keys) and strict byte/row limiters. Oversized datasets are throttled before leaving server RAM.
@@ -184,7 +196,6 @@
                     </div>
 
                     <div class="glass-card feature-card">
-                        <div class="feature-icon">📐</div>
                         <h3 class="feature-title">Deterministic Native Math</h3>
                         <p class="feature-desc">
                             LLMs are probabilistic language predictors. Forcing them to compute financial variances or multi-table joins in prompt tokens creates hallucinations. Opto executes math in native CPU memory with 100% exact parity.
@@ -192,7 +203,6 @@
                     </div>
 
                     <div class="glass-card feature-card">
-                        <div class="feature-icon">🔄</div>
                         <h3 class="feature-title">Dynamic Execution Circuits</h3>
                         <p class="feature-desc">
                             Avoid monolithic tool sprawl. Opto orchestrates client-side tooling like Excel parsers, SQL joins, and aggregators into fast execution paths, entirely in private RAM.
@@ -200,7 +210,6 @@
                     </div>
 
                     <div class="glass-card feature-card">
-                        <div class="feature-icon">🔌</div>
                         <h3 class="feature-title">Drop-In Compatible, Windows or Linux</h3>
                         <p class="feature-desc">
                             Installs as a native local tool server, no dependency stack to manage. Plugs instantly into Claude Code, Antigravity, Cursor, or any enterprise AI agent architecture.
@@ -208,10 +217,9 @@
                     </div>
 
                     <div class="glass-card feature-card">
-                        <div class="feature-icon">🏛️</div>
-                        <h3 class="feature-title">Cryptographic Provenance</h3>
+                        <h3 class="feature-title">Small App, Full Control</h3>
                         <p class="feature-desc">
-                            Every execution emits a structured DAG audit trail: input data hashes, processor versions, execution latency, and return receipts—fully compliant with SOC2, HIPAA, and enterprise audit standards.
+                            No large appliance to stand up and manage. Opto deploys as a small local app through your existing corporate tooling and approval policies, the same way any other application does — which means your own security team can independently verify and certify exactly which capabilities are enabled, on infrastructure you already control.
                         </p>
                     </div>
                 </div>

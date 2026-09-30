@@ -458,6 +458,36 @@ h1, h2, h3, h4, .logo {
     }
 }
 
+/* Reduction Breakdown Table */
+.reduction-table-wrap {
+    padding: 24px;
+}
+
+.reduction-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+}
+
+.reduction-table th, .reduction-table td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.reduction-table th {
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.5px;
+}
+
+.reduction-table td {
+    color: var(--text-primary);
+}
+
 /* Features Grid */
 .features-section {
     padding: 100px 0;
@@ -493,19 +523,6 @@ h1, h2, h3, h4, .logo {
 .feature-card:hover {
     transform: translateY(-4px);
     border-color: var(--border-hover);
-}
-
-.feature-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    background: rgba(0, 138, 208, 0.12);
-    color: var(--brand-blue);
-    font-size: 1.4rem;
 }
 
 .feature-title {
