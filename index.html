@@ -164,9 +164,9 @@
         <section id="video" class="video-section">
             <div class="container">
                 <div class="glass-card video-card">
-                    <div class="video-placeholder">
+                    <div class="video-placeholder" id="videoPlaceholder" onclick="playOptoVideo()" style="cursor: pointer;">
                         <div class="video-play-btn">▶</div>
-                        <p>Video walkthrough — link pending</p>
+                        <p>Opto in 60 Seconds</p>
                     </div>
                 </div>
             </div>
@@ -236,5 +236,15 @@
 
     <script src="chart.umd.min.js"></script>
     <script src="sim-chart.js"></script>
+    <script>
+        function playOptoVideo() {
+            const el = document.getElementById('videoPlaceholder');
+            if (!el) return;
+            el.outerHTML = '<iframe src="https://player.vimeo.com/video/1231580634?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1" ' +
+                'frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" ' +
+                'referrerpolicy="strict-origin-when-cross-origin" style="width:100%;height:100%;aspect-ratio:16/9;display:block;" ' +
+                'title="Opto in 60 seconds"></iframe>';
+        }
+    </script>
 </body>
 </html>
