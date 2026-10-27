@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opto by Modulus — The Sovereign In-Memory Execution Air-Gap</title>
-    <meta name="description" content="Opto provides an optical-style air-gap between enterprise data and AI models. Lock down your sensitive databases, eliminate data exfiltration, and slash token spend by 68% on average.">
+    <meta name="description" content="Opto provides an optical-style air-gap between enterprise data and AI models. Lock down your sensitive databases, eliminate data exfiltration, and cut token spend by 47% on average.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -23,6 +23,7 @@
                 <span style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600; color: #9CA3AF; letter-spacing: 0.5px; margin-left: 2px;">by modulus</span>
             </a>
             <nav class="nav">
+                <a href="#video" class="nav-link" onclick="playOptoVideo()">Watch the Video</a>
                 <a href="#airgap" class="nav-link">The Air-Gap</a>
                 <a href="#live-sim" class="nav-link">Live Simulation</a>
                 <a href="#roi" class="nav-link">Empirical ROI</a>
@@ -38,38 +39,23 @@
             <div class="container hero-container">
                 <div class="hero-content">
                     <div class="badge">The In-Memory AI Air-Gap</div>
-                    <h1 class="hero-title">Lock Down Your Data.<br>Slash Token Spend <br><span class="text-orange">by 68%, on average.</span></h1>
+                    <h1 class="hero-title">Lock Down Your Data.<br>Cut Token Spend <br><span class="text-orange">by 47%, on average.</span></h1>
+                    <p class="hero-kicker">67% average token reduction</p>
                     <p class="hero-subtitle">
                         Stop streaming confidential files and raw database rows to public LLM APIs. <strong>Opto by Modulus</strong> provides an in-memory execution air-gap: transformations, SQL joins, aggregations, and PII redaction execute locally in private RAM—emitting only compact, mathematically verified answers.
                     </p>
                     <div class="hero-actions">
                         <a href="mailto:sandbox@getopto.dev?subject=Request%20Sandbox%20Access%20(15-Minute%20Call)" class="btn btn-primary">Request Sandbox Access</a>
-                        <a href="#video" class="btn btn-secondary">Watch the Video</a>
+                        <a href="#video" class="btn btn-secondary" onclick="playOptoVideo()">▶ Watch the Video</a>
                     </div>
                     <p style="margin-top: 14px; font-size: 0.85rem; color: var(--text-muted);">Sandbox access is granted after a 15-minute walkthrough call — no self-serve signup yet.</p>
                 </div>
                 
-                <div class="hero-visual">
-                    <div class="glass-card hero-card">
-                        <div class="card-header">
-                            <div class="dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <div class="card-title">opto-airgap-governor.log</div>
-                        </div>
-                        <div class="console-body">
-                            <div class="terminal-line"><span class="c-blue">[opto:ingress]</span> Intercepted multi-system audit request</div>
-                            <div class="terminal-line"><span class="c-blue">[opto:airgap]</span> Clamping LLM access: 0 shell, 0 network sockets</div>
-                            <div class="terminal-line"><span class="c-dim">[opto:local]</span> Executing in-memory hash join (10,000 rows)...</div>
-                            <div class="terminal-line"><span class="c-green">[opto:math]</span> 100% exact bit-accuracy (0 hallucinations)</div>
-                            <div class="terminal-line"><span class="c-orange">[opto:pii]</span> Redacted 4 SSNs, 12 customer emails in RAM</div>
-                            <div class="terminal-line"><span class="c-orange">[opto:throttle]</span> Egress dataset bounded before leaving RAM</div>
-                            <div class="terminal-line" style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 8px;">
-                                <span class="c-green">✔ Token Reduction:</span> <span class="c-blue">54,396 → 10,782 (80.2%)</span>
-                            </div>
-                            <div class="terminal-line" style="color: var(--text-muted); font-size: 0.8rem;">measured average, Small/cold-cache tier — full range at <a href="methodology.html" style="color: var(--brand-blue);">methodology.html</a></div>
+                <div class="hero-visual" id="video">
+                    <div class="glass-card video-card hero-video">
+                        <div class="video-placeholder" id="videoPlaceholder" onclick="playOptoVideo()" style="cursor: pointer; background-image: url('video-thumb.jpg'); background-size: cover; background-position: center;">
+                            <div class="video-play-btn" style="background: rgba(13, 18, 31, 0.75); backdrop-filter: blur(2px);">▶</div>
+                            <p style="background: rgba(13, 18, 31, 0.75); padding: 4px 14px; border-radius: 6px; backdrop-filter: blur(2px);">Opto in 60 Seconds</p>
                         </div>
                     </div>
                 </div>
@@ -81,7 +67,11 @@
             <div class="container">
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <h3 class="text-orange">68%</h3>
+                        <h3 class="text-orange">47%</h3>
+                        <p>Average Spend Reduction</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="text-orange">67%</h3>
                         <p>Average Token Reduction</p>
                     </div>
                     <div class="stat-item">
@@ -98,7 +88,7 @@
                     </div>
                 </div>
                 <p style="text-align: center; margin-top: 28px; font-size: 0.9rem; color: var(--text-muted);">
-                    68% is a blended average, not a guarantee — actual savings depend on your query mix. <a href="methodology.html" style="color: var(--brand-blue);">See the full methodology &amp; fact sheet →</a>
+                    47% spend and 67% token reduction are blended averages, not guarantees — actual savings depend on your query mix. <a href="methodology.html" style="color: var(--brand-blue);">See the full methodology &amp; fact sheet →</a>
                 </p>
             </div>
         </section>
@@ -144,7 +134,7 @@
                     <p class="sim-footnote">Source: <code>opto_pid_timeseries.csv</code> / <code>frontier_unmanaged_timeseries.csv</code>, one full simulated 10-hour workday (600 minutes), sampled every 5 minutes.</p>
 
                     <div class="reduction-table-wrap" style="border-top: 1px solid var(--border-color);">
-                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 14px;">68% is the blended full-day average across a realistic query mix. The real reduction per query type, measured directly from 355 real API calls, varies by size and cache state:</p>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 14px;">47% (spend) and 67% (tokens) are the blended full-day averages across a realistic query mix. The real reduction per query type, measured directly from 355 real API calls, varies by size and cache state:</p>
                         <table class="reduction-table">
                             <tr><th>Size</th><th>Cache</th><th>Token Reduction</th><th>Cost Reduction</th></tr>
                             <tr><td>Small</td><td>Cold</td><td>80.2%</td><td>79.1%</td></tr>
@@ -160,15 +150,31 @@
             </div>
         </section>
 
-        <!-- Video Section -->
-        <section id="video" class="video-section">
+        <!-- Console Section (moved down from hero) -->
+        <section class="console-section">
             <div class="container">
-                <div class="glass-card video-card">
-                    <div class="video-placeholder" id="videoPlaceholder" onclick="playOptoVideo()" style="cursor: pointer; background-image: url('video-thumb.jpg'); background-size: cover; background-position: center;">
-                        <div class="video-play-btn" style="background: rgba(13, 18, 31, 0.75); backdrop-filter: blur(2px);">▶</div>
-                        <p style="background: rgba(13, 18, 31, 0.75); padding: 4px 14px; border-radius: 6px; backdrop-filter: blur(2px);">Opto in 60 Seconds</p>
+                    <div class="glass-card hero-card">
+                        <div class="card-header">
+                            <div class="dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="card-title">opto-airgap-governor.log</div>
+                        </div>
+                        <div class="console-body">
+                            <div class="terminal-line"><span class="c-blue">[opto:ingress]</span> Intercepted multi-system audit request</div>
+                            <div class="terminal-line"><span class="c-blue">[opto:airgap]</span> Clamping LLM access: 0 shell, 0 network sockets</div>
+                            <div class="terminal-line"><span class="c-dim">[opto:local]</span> Executing in-memory hash join (10,000 rows)...</div>
+                            <div class="terminal-line"><span class="c-green">[opto:math]</span> 100% exact bit-accuracy (0 hallucinations)</div>
+                            <div class="terminal-line"><span class="c-orange">[opto:pii]</span> Redacted 4 SSNs, 12 customer emails in RAM</div>
+                            <div class="terminal-line"><span class="c-orange">[opto:throttle]</span> Egress dataset bounded before leaving RAM</div>
+                            <div class="terminal-line" style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 8px;">
+                                <span class="c-green">✔ Token Reduction:</span> <span class="c-blue">54,396 → 10,782 (80.2%)</span>
+                            </div>
+                            <div class="terminal-line" style="color: var(--text-muted); font-size: 0.8rem;">measured average, Small/cold-cache tier — full range at <a href="methodology.html" style="color: var(--brand-blue);">methodology.html</a></div>
+                        </div>
                     </div>
-                </div>
             </div>
         </section>
 
@@ -240,10 +246,15 @@
         function playOptoVideo() {
             const el = document.getElementById('videoPlaceholder');
             if (!el) return;
+            // Expand to a wide, single-column layout while the video plays
+            const hero = document.querySelector('.hero-container');
+            if (hero) hero.classList.add('video-expanded');
             el.outerHTML = '<iframe src="https://player.vimeo.com/video/1231580634?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;byline=0&amp;portrait=0" ' +
                 'frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" ' +
                 'referrerpolicy="strict-origin-when-cross-origin" style="width:100%;height:100%;aspect-ratio:16/9;display:block;" ' +
                 'title="Opto in 60 seconds"></iframe>';
+            const target = document.getElementById('video');
+            if (target) setTimeout(function () { target.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 60);
         }
     </script>
 </body>
