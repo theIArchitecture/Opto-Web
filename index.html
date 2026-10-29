@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opto by Modulus — The Sovereign In-Memory Execution Air-Gap</title>
-    <meta name="description" content="Opto provides an optical-style air-gap between enterprise data and AI models. Lock down your sensitive databases, eliminate data exfiltration, and cut token spend by 47% on average.">
+    <meta name="description" content="Opto provides an optical-style air-gap between enterprise data and AI models. Lock down your sensitive databases, eliminate data exfiltration, and cut token spend by 46% on average.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -39,10 +39,11 @@
             <div class="container hero-container">
                 <div class="hero-content">
                     <div class="badge">The In-Memory AI Air-Gap</div>
-                    <h1 class="hero-title">Lock Down Your Data.<br>Cut Token Spend <br><span class="text-orange">by 47%, on average.</span></h1>
-                    <p class="hero-kicker">67% average token reduction</p>
+                    <h1 class="hero-title">Lock Down Your Data.<br>Cut Token Spend <br><span class="text-orange">by 46%, on average.</span></h1>
+                    <p class="hero-kicker">68% average token reduction</p>
+                    <p class="hero-note">Opto with its optional cost governor, compared with neither. Average of 30 simulated workdays for a 50-person company.</p>
                     <p class="hero-subtitle">
-                        Stop streaming confidential files and raw database rows to public LLM APIs. <strong>Opto by Modulus</strong> provides an in-memory execution air-gap: transformations, SQL joins, aggregations, and PII redaction execute locally in private RAM—emitting only compact, mathematically verified answers.
+                        Stop streaming confidential files and raw database rows to public LLM APIs. <strong>Opto by Modulus</strong> provides an in-memory execution air-gap: transformations, SQL joins, aggregations, and PII redaction execute locally in private RAM—emitting only compact answers.
                     </p>
                     <div class="hero-actions">
                         <a href="mailto:sandbox@getopto.dev?subject=Request%20Sandbox%20Access%20(15-Minute%20Call)" class="btn btn-primary">Request Sandbox Access</a>
@@ -67,28 +68,25 @@
             <div class="container">
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <h3 class="text-orange">47%</h3>
+                        <h3 class="text-orange">46%</h3>
                         <p>Average Spend Reduction</p>
                     </div>
                     <div class="stat-item">
-                        <h3 class="text-orange">67%</h3>
+                        <h3 class="text-orange">68%</h3>
                         <p>Average Token Reduction</p>
                     </div>
                     <div class="stat-item">
                         <h3 class="text-blue">355</h3>
-                        <p>Real Measured API Calls, Underlying Sample</p>
+                        <p>Real Measured Task Runs, Underlying Sample</p>
                     </div>
                     <div class="stat-item">
-                        <h3 class="text-green">100%</h3>
-                        <p>Deterministic Math Accuracy</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 style="color: var(--text-primary);">&lt; 10 min</h3>
-                        <p>Drop-in Deployment, Windows or Linux</p>
+                        <h3 style="color: var(--text-primary);">Simple</h3>
+                        <p>to Deploy: a Small Local App, Windows or Linux</p>
                     </div>
                 </div>
+                </div>
                 <p style="text-align: center; margin-top: 28px; font-size: 0.9rem; color: var(--text-muted);">
-                    47% spend and 67% token reduction are blended averages, not guarantees — actual savings depend on your query mix. <a href="methodology.html" style="color: var(--brand-blue);">See the full methodology &amp; fact sheet →</a>
+                    46% spend and 68% token reduction are the averages of 30 simulated workdays, Opto with the cost governor against neither. They are not guarantees — actual savings depend on your query mix. <a href="methodology.html" style="color: var(--brand-blue);">See the full methodology &amp; fact sheet →</a>
                 </p>
             </div>
         </section>
@@ -97,8 +95,8 @@
         <section id="live-sim" class="live-sim-section">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">One Real Simulated Workday, Not a Deck</h2>
-                    <p class="section-subtitle">A day-long, 50-user workday simulation seeded entirely by a frozen campaign of 355 real measured API calls (input tokens, output tokens, dollar cost, per-mode, per-cache-state). No projection formulas, no invented ratios — every point below is read straight out of the sim's own output CSV.</p>
+                    <h2 class="section-title">30 Simulated Workdays, Averaged</h2>
+                    <p class="section-subtitle">A 50-user, 600-minute workday simulated 30 times, with query sizes taken from a frozen campaign of 355 real measured task runs (input tokens, output tokens, dollar cost, per-mode, per-cache-state). The line is the 30-day average and the shaded band covers the middle 80% of days. The chart compares two of the four modeled cases: no Opto and no governor, against Opto with the cost governor.</p>
                 </div>
 
                 <div class="glass-card sim-card">
@@ -115,11 +113,11 @@
 
                     <div class="sim-summary">
                         <div class="sim-summary-item">
-                            <span class="sim-summary-label">Frontier (Unmanaged)</span>
+                            <span class="sim-summary-label">No Opto, no governor</span>
                             <span class="sim-summary-value" id="simFrontierVal" style="color: var(--text-secondary);">—</span>
                         </div>
                         <div class="sim-summary-item">
-                            <span class="sim-summary-label">Opto (PID-Governed)</span>
+                            <span class="sim-summary-label">Opto + cost governor</span>
                             <span class="sim-summary-value" id="simOptoVal" style="color: var(--brand-blue);">—</span>
                         </div>
                         <div class="sim-summary-item">
@@ -131,10 +129,19 @@
                     <div class="sim-chart-wrap">
                         <canvas id="simChart" height="110"></canvas>
                     </div>
-                    <p class="sim-footnote">Source: <code>opto_pid_timeseries.csv</code> / <code>frontier_unmanaged_timeseries.csv</code>, one full simulated 10-hour workday (600 minutes), sampled every 5 minutes.</p>
+                    <p class="sim-footnote">30 simulated workdays (seeds 1001 to 1030), each 600 minutes, sampled every 5 minutes. Line = average across the 30 days; band = 10th to 90th percentile; "lower" = average of the 30 daily reductions. Rate view = 5-minute rolling average. The same 30 days are replayed through every case. Reproducible from the published run files.</p>
 
                     <div class="reduction-table-wrap" style="border-top: 1px solid var(--border-color);">
-                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 14px;">47% (spend) and 67% (tokens) are the blended full-day averages across a realistic query mix. The real reduction per query type, measured directly from 355 real API calls, varies by size and cache state:</p>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 14px;">The simulation compares four cases. Opto and the cost governor are separate: Opto works with any model on its own, and the governor is an optional add-on that steers each request toward a frontier or a cheaper model. Averages of the 30 days:</p>
+                        <div class="table-scroll"><table class="reduction-table" style="margin-bottom: 8px;">
+                            <tr><th>Case</th><th>Daily spend</th><th>Spend vs. neither</th><th>Tokens vs. neither</th><th>Frontier requests that got the frontier model</th></tr>
+                            <tr><td>Neither</td><td>$92.10</td><td>baseline</td><td>baseline</td><td>100%</td></tr>
+                            <tr><td>Governor only</td><td>$66.30</td><td>28% lower</td><td>6% higher</td><td>23%</td></tr>
+                            <tr><td>Opto only</td><td>$58.62</td><td>36% lower</td><td>71% lower</td><td>100%</td></tr>
+                            <tr><td>Opto + governor</td><td>$49.27</td><td>46% lower</td><td>68% lower</td><td>64%</td></tr>
+                        </table></div>
+                        <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 28px;">The governor saves money by serving some requests with a cheaper model; it steers toward a configurable daily spend target and does not block requests. The simulation does not model rate-limit rejections or user retries. Details at <a href="methodology.html" style="color: var(--brand-blue);">methodology.html</a>.</p>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 14px;">Opto's own effect per query type, measured directly from real task runs on Claude Sonnet 5 (a Claude Haiku 4.5 table is in the methodology), varies by size and cache state:</p>
                         <table class="reduction-table">
                             <tr><th>Size</th><th>Cache</th><th>Token Reduction</th><th>Cost Reduction</th></tr>
                             <tr><td>Small</td><td>Cold</td><td>80.2%</td><td>79.1%</td></tr>
@@ -147,34 +154,6 @@
                         <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 12px;">Cost reduction narrows on warm-cache queries because Anthropic's own cache discount already lowers the unaided baseline's price — full methodology at <a href="methodology.html" style="color: var(--brand-blue);">methodology.html</a>.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Console Section (moved down from hero) -->
-        <section class="console-section">
-            <div class="container">
-                    <div class="glass-card hero-card">
-                        <div class="card-header">
-                            <div class="dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <div class="card-title">opto-airgap-governor.log</div>
-                        </div>
-                        <div class="console-body">
-                            <div class="terminal-line"><span class="c-blue">[opto:ingress]</span> Intercepted multi-system audit request</div>
-                            <div class="terminal-line"><span class="c-blue">[opto:airgap]</span> Clamping LLM access: 0 shell, 0 network sockets</div>
-                            <div class="terminal-line"><span class="c-dim">[opto:local]</span> Executing in-memory hash join (10,000 rows)...</div>
-                            <div class="terminal-line"><span class="c-green">[opto:math]</span> 100% exact bit-accuracy (0 hallucinations)</div>
-                            <div class="terminal-line"><span class="c-orange">[opto:pii]</span> Redacted 4 SSNs, 12 customer emails in RAM</div>
-                            <div class="terminal-line"><span class="c-orange">[opto:throttle]</span> Egress dataset bounded before leaving RAM</div>
-                            <div class="terminal-line" style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 8px;">
-                                <span class="c-green">✔ Token Reduction:</span> <span class="c-blue">54,396 → 10,782 (80.2%)</span>
-                            </div>
-                            <div class="terminal-line" style="color: var(--text-muted); font-size: 0.8rem;">measured average, Small/cold-cache tier — full range at <a href="methodology.html" style="color: var(--brand-blue);">methodology.html</a></div>
-                        </div>
-                    </div>
             </div>
         </section>
 
@@ -202,13 +181,6 @@
                     </div>
 
                     <div class="glass-card feature-card">
-                        <h3 class="feature-title">Deterministic Native Math</h3>
-                        <p class="feature-desc">
-                            LLMs are probabilistic language predictors. Forcing them to compute financial variances or multi-table joins in prompt tokens creates hallucinations. Opto executes math in native CPU memory with 100% exact parity.
-                        </p>
-                    </div>
-
-                    <div class="glass-card feature-card">
                         <h3 class="feature-title">Dynamic Execution Circuits</h3>
                         <p class="feature-desc">
                             Avoid monolithic tool sprawl. Opto orchestrates client-side tooling like Excel parsers, SQL joins, and aggregators into fast execution paths, entirely in private RAM.
@@ -218,7 +190,14 @@
                     <div class="glass-card feature-card">
                         <h3 class="feature-title">Drop-In Compatible, Windows or Linux</h3>
                         <p class="feature-desc">
-                            Installs as a native local tool server, no dependency stack to manage. Plugs instantly into Claude Code, Antigravity, Cursor, or any enterprise AI agent architecture.
+                            Installs as a native local tool server, no dependency stack to manage. Plugs into Claude Code, Antigravity, Cursor, or any enterprise AI agent architecture.
+                        </p>
+                    </div>
+
+                    <div class="glass-card feature-card">
+                        <h3 class="feature-title">Optional Cost Governor</h3>
+                        <p class="feature-desc">
+                            Opto saves tokens with any model on its own. The cost governor is an optional add-on that complements it: a feedback controller that runs in a gateway, not in the local install, and steers each request toward a frontier or a cheaper model to follow a daily spend target. In our simulation it adds about ten points of spend savings on top of Opto's, with roughly a third of frontier requests served by a cheaper model.
                         </p>
                     </div>
 

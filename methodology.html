@@ -51,13 +51,13 @@
             <div class="container" style="max-width: 800px;">
                 <a href="index.html" class="back-link">&larr; Back to Opto</a>
                 <h1 class="section-title" style="margin-bottom: 12px;">Evaluation Methodology &amp; Fact Sheet</h1>
-                <p class="section-subtitle" style="text-align: left; margin-bottom: 40px;">Every number on this page is read directly from a frozen evaluation dataset — nothing here is projected, adjusted, or rounded up. If a number on the main site links here, this is where it comes from.</p>
+                <p class="section-subtitle" style="text-align: left; margin-bottom: 40px;">The measured numbers on this page are read directly from a frozen evaluation dataset. The simulation numbers come from a seeded model of a 50-person workday, described below. Nothing is adjusted or rounded up. If a number on the main site links here, this is where it comes from.</p>
 
                 <div class="glass-card fact-card">
                     <h2 class="text-blue">Evaluation Basis</h2>
                     <ul>
-                        <li>Measurement campaign conducted <strong>2026-09-27 to 2026-09-28</strong> against live Anthropic API endpoints (Claude Sonnet 5 and Claude Haiku 4.5), not a mock or simulated backend.</li>
-                        <li><strong>438 total runs attempted</strong>, of which <strong>355 were kept</strong> as clean, comparable measurements.</li>
+                        <li>Measurement campaign conducted on <strong>2026-09-27</strong> (UTC) against live Anthropic API endpoints (Claude Sonnet 5 and Claude Haiku 4.5), driven by the Claude Code command-line agent, not a mock or simulated backend. Other agents and other model providers have not been measured.</li>
+                        <li><strong>444 runs recorded</strong>. <strong>6</strong> were set aside because the cache state seen on the first call did not match the plan, and <strong>83</strong> were excluded (below), leaving <strong>355 kept</strong> as clean, comparable measurements: 176 on Claude Sonnet 5 and 179 on Claude Haiku 4.5. A &ldquo;run&rdquo; is one task executed once; the 355 kept runs contain 2,390 individual API calls.</li>
                         <li><strong>83 runs excluded</strong> from the results: 74 were superseded/retired task-wording versions (a task prompt was revised mid-campaign, both old and new versions can't be mixed under one task id), 8 were a PII probe task intentionally excluded from savings numbers, and 1 was excluded for a cross-task answer contamination incident.</li>
                         <li>Task sizes span three bands — Small (light chat / status checks), Medium (Excel/PDF/invoice-scale documents), Heavy (SQL joins, directory scans, Parquet merges) — each run against both an unaided baseline and Opto, on both a cold cache and a warm cache, on both models.</li>
                     </ul>
@@ -65,17 +65,17 @@
 
                 <div class="glass-card fact-card">
                     <h2 class="text-blue">Query Size Range</h2>
-                    <p>Across all 355 kept runs, individual query size ranged:</p>
+                    <p>Across all 355 kept runs (both models), individual run size ranged:</p>
                     <table class="fact-table">
                         <tr><th>Metric</th><th>Minimum</th><th>Maximum</th></tr>
-                        <tr><td>Tokens per query (input + output)</td><td>10,638</td><td>2,152,880</td></tr>
-                        <tr><td>Dollar cost per query</td><td>$0.0053</td><td>$1.2221</td></tr>
+                        <tr><td>Tokens per run (input + output)</td><td>7,913</td><td>2,927,639</td></tr>
+                        <tr><td>Dollar cost per run</td><td>$0.0021</td><td>$1.2221</td></tr>
                     </table>
                 </div>
 
                 <div class="glass-card fact-card">
                     <h2 class="text-orange">Reduction Range, By Query Type</h2>
-                    <p>Opto's advantage is not a single number — it depends heavily on query size and whether the cache is warm. Per-query average reduction, unaided vs. Opto, across the six measured size/cache-state combinations:</p>
+                    <p>Opto's advantage is not a single number — it depends heavily on query size and whether the cache is warm. Per-run average reduction, unaided vs. Opto, across the six measured size/cache-state combinations. <strong>Claude Sonnet 5</strong> (176 runs):</p>
                     <table class="fact-table">
                         <tr><th>Size</th><th>Cache</th><th>Token Reduction</th><th>Cost Reduction</th></tr>
                         <tr><td>Small</td><td>Cold</td><td>80.2%</td><td>79.1%</td></tr>
@@ -85,7 +85,37 @@
                         <tr><td>Heavy</td><td>Cold</td><td>57.5%</td><td>40.9%</td></tr>
                         <tr><td>Heavy</td><td>Warm</td><td>71.6%</td><td>46.1%</td></tr>
                     </table>
-                    <p style="margin-top: 16px;"><strong>Token reduction: 57.5% – 81.4%.</strong> <strong>Cost reduction: 14.3% – 79.1%.</strong> Cost reduction narrows on warm-cache Medium/Heavy queries because Anthropic's own cache discount already lowers the unaided baseline's price — Opto's token savings are still real and large there, they just translate into a smaller dollar gap once the baseline itself gets cheaper.</p>
+                    <p style="margin-top: 24px;"><strong>Claude Haiku 4.5</strong> (179 runs):</p>
+                    <table class="fact-table">
+                        <tr><th>Size</th><th>Cache</th><th>Token Reduction</th><th>Cost Reduction</th></tr>
+                        <tr><td>Small</td><td>Cold</td><td>81.5%</td><td>80.7%</td></tr>
+                        <tr><td>Small</td><td>Warm</td><td>81.5%</td><td>69.3%</td></tr>
+                        <tr><td>Medium</td><td>Cold</td><td>57.1%</td><td>55.1%</td></tr>
+                        <tr><td>Medium</td><td>Warm</td><td>61.1%</td><td>34.9%</td></tr>
+                        <tr><td>Heavy</td><td>Cold</td><td>70.2%</td><td>59.6%</td></tr>
+                        <tr><td>Heavy</td><td>Warm</td><td>66.5%</td><td>53.5%</td></tr>
+                    </table>
+                    <p style="margin-top: 16px;"><strong>Sonnet: token reduction 57.5% – 81.4%, cost reduction 14.3% – 79.1%. Haiku: token reduction 57.1% – 81.5%, cost reduction 34.9% – 80.7%.</strong> Cost reduction narrows on warm-cache Medium/Heavy queries because Anthropic's own cache discount already lowers the unaided baseline's price — Opto's token savings are still real and large there, they just translate into a smaller dollar gap once the baseline itself gets cheaper.</p>
+                </div>
+
+                <div class="glass-card fact-card">
+                    <h2 class="text-orange">Simulation Basis</h2>
+                    <p>The headline figures (46% lower spend, 68% fewer tokens) come from a simulation of a 50-person organization, not from a customer deployment.</p>
+                    <ul>
+                        <li><strong>30 simulated workdays</strong> (seeds 1001 to 1030), each 600 minutes (8:00 AM to 6:00 PM) with morning ramp, lunch dip and afternoon peak. Each day's workload is generated once and replayed identically through all four cases, so every comparison is like-for-like. Results are averages across the 30 days.</li>
+                        <li><strong>Query sizes come from the measured campaign above.</strong> The workforce mix, query mix, session lengths and daily pattern are modeled assumptions, set in a published configuration file.</li>
+                        <li><strong>Opto and the cost governor are separate.</strong> Opto trims what a model is sent and works with any model. The cost governor is an optional feedback controller that runs in a gateway and steers each request toward a frontier or cheaper model to follow a daily spend target (this simulation uses $55 a day). It steers; it does not block requests or enforce a cap.</li>
+                        <li><strong>Reproducible.</strong> The full run replays bit for bit from its recorded seeds (120 of 120 case runs identical).</li>
+                    </ul>
+                    <div class="table-scroll"><table class="fact-table">
+                        <tr><th>Case</th><th>Daily spend (range)</th><th>Spend vs. neither</th><th>Tokens vs. neither</th><th>Frontier requests that got the frontier model</th></tr>
+                        <tr><td>Neither</td><td>$92.10 ($80&ndash;$103)</td><td>baseline</td><td>baseline</td><td>100%</td></tr>
+                        <tr><td>Governor only</td><td>$66.30 ($61&ndash;$78)</td><td>27.9% lower</td><td>5.8% higher</td><td>23.2%</td></tr>
+                        <tr><td>Opto only</td><td>$58.62 ($54&ndash;$66)</td><td>36.3% lower</td><td>71.1% lower</td><td>100%</td></tr>
+                        <tr><td>Opto + governor</td><td>$49.27 ($44&ndash;$53)</td><td>46.4% lower</td><td>68.1% lower</td><td>63.9%</td></tr>
+                    </table></div>
+                    <p style="margin-top: 16px;">With Opto and the governor together, the busiest five minutes of the day fall by about 70%, and daily spend varied far less from day to day than without. The governor saves money by serving some frontier-model requests with a cheaper model: about 85 of roughly 234 per day in this simulation. It does not look at what a request is when choosing, so which requests are downgraded is an area still being improved.</p>
+                    <p><strong>Not modeled:</strong> rate-limit rejections, user retries, and the cost of waiting. Retries and waiting would add to the unaided baseline, so leaving them out understates the savings; rate-limit rejections are not part of the results.</p>
                 </div>
 
                 <div class="callout">

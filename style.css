@@ -230,6 +230,16 @@ h1, h2, h3, h4, .logo {
     margin: -10px 0 20px 0;
 }
 
+.hero-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: -10px 0 20px 0;
+}
+
+.hero-container.video-expanded .hero-note {
+    text-align: center;
+}
+
 .hero-subtitle {
     font-size: 1.2rem;
     color: var(--text-secondary);
@@ -312,7 +322,7 @@ h1, h2, h3, h4, .logo {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     text-align: center;
 }
@@ -640,4 +650,14 @@ footer a {
     .header {
         padding: 14px 0;
     }
+}
+
+/* Wide tables scroll sideways inside their box on small screens */
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-scroll table {
+    min-width: 560px;
 }
